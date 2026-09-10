@@ -35,6 +35,7 @@ const toGrade = (score) => {
 
 const gradeCount = (list) => {
   const result = { A: 0, B: 0, C: 0, D: 0, F: 0 };
+  list.forEach(s => { result[toGrade(s.score)]++; });
   return result;
 };
 
