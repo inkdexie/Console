@@ -8,3 +8,13 @@ const subscriptions = [
   { name: 'Notion',    amount: 0,   type: '工具' },
   { name: 'B站大会员', amount: 88,  type: '影音' }
 ];
+
+// 清洗：只保留金额大于0的订阅
+const cleanSubs = (list) => list.filter(s => s.amount > 0);
+
+// 总支出
+const totalAmount = (list) => list.reduce((sum, s) => sum + s.amount, 0);
+
+// 超预算的订阅名称
+const overBudget = (list, budget) =>
+  list.filter(s => s.amount > budget).map(s => s.name);
