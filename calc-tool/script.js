@@ -18,3 +18,13 @@ const totalAmount = (list) => list.reduce((sum, s) => sum + s.amount, 0);
 // 超预算的订阅名称
 const overBudget = (list, budget) =>
   list.filter(s => s.amount > budget).map(s => s.name);
+
+// 输出账单
+const printBill = (list, budget) => {
+  const valid = cleanSubs(list);
+  console.log('合法订阅：', valid);
+  console.log('总支出：' + totalAmount(valid) + '元');
+  console.log('超' + budget + '元：' + (overBudget(valid, budget).join('、') || '无'));
+};
+
+printBill(subscriptions, 50);
